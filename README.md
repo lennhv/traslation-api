@@ -1,6 +1,6 @@
 # traslation API
 
-This API uses google spreadsheets to perform traslations
+This API uses google spreadsheets to perform translations
 
 The API has two endpoins
 
@@ -12,7 +12,7 @@ The API has two endpoins
     {
         lang_source*	string ISO lang
         lang_target*	string ISO lang
-        text*	[string]
+        text*   [string]
     }
     ```
 
@@ -23,7 +23,7 @@ The API has two endpoins
 
     ```json
     {
-        traslation*	[string]
+        traslation* [string]
     }
     ```
 
