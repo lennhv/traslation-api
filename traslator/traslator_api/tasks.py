@@ -1,3 +1,4 @@
+import time
 import pygsheets
 from celery import task
 from celery.utils.log import get_task_logger
@@ -26,10 +27,18 @@ def traslate_task(**kwargs):
                     row_idx, kwargs['lang_source'], kwargs['lang_target'])
         wks.update_row(i+1, [word, traslator])
 
+    time.sleep(5) # wait for traslations
+
     traslation = []
     for i, word in enumerate(words):
         row_idx = "B%s" % str(i+1)
-        traslation.append(wks.get_value(row_idx))
+        _word = word
+        for i in range(10):
+            _word = wks.get_value(row_idx)
+            if _word != 'Loading...':
+                break
+            time.sleep(2)
+        traslation.append(_word)
     log.debug("traslation %s", str(traslation))
 
     Traslation.objects.save_traslation(kwargs["id"], traslation)

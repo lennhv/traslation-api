@@ -15,6 +15,7 @@ import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 env = environ.Env()
 
@@ -132,6 +133,9 @@ LOCALE_PATHS = (
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIR = [
+    os.path.join(BASE_DIR, "static")
+]
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES' :(
