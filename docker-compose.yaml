@@ -1,0 +1,24 @@
+version: '3'
+services:
+    db:
+        image: postgres
+        ports:
+            - 5432:5432
+        environment:
+            - POSTGRES_USER=${DB_USER}
+            - POSTGRES_DB=${DB_NAME}
+            - POSTGRES_PASSWORD=${DB_PASSWORD}
+    # redis-celery:
+    #     image: redis:alpine
+    #     command: redis-server --requirepass ${REDIS_PASSWORD}
+    #     ports:
+    #         - 6379:6379
+    celery:
+        image: rabbitmq:3-management
+        ports:
+            - 5672:5672
+            - 8090:15672
+            # - 8080:15672
+        environment:
+            - RABBITMQ_DEFAULT_USER=${RABBIT_USER}
+            - RABBITMQ_DEFAULT_PASS=${RABBIT_PASSWORD}
