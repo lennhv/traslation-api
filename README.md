@@ -17,7 +17,7 @@ The API has two endpoins
     ```
 
 
-* api/v1/traslations/<uuid>/
+* api/v1/traslations/{uuid}/
 
     The translation is an async task and the result is obtained with this endpoint
 
